@@ -11,6 +11,8 @@ export const Booking = () => {
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({ name: '', phone: '' });
   const [formError, setFormError] = useState('');
+  const [selectedSeatsCount, setSelectedSeatsCount] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   const rows = Array(6)
     .fill()
@@ -30,6 +32,7 @@ export const Booking = () => {
           const occupied = bookingsResponse.data.flatMap((booking) => booking.seats);
           setOccupiedSeats(occupied);
         }
+
       } catch (error) {
         console.error('Error fetching movies:', error);
       }
@@ -60,7 +63,11 @@ export const Booking = () => {
       prev.includes(seatId) ? prev.filter((id) => id !== seatId) : [...prev, seatId]
     );
   };
-
+  const updateSelectedCount = (newSelectedSeats) => {
+    const selectedSeatsCount = newSelectedSeats.length;
+    setSelectedSeatsCount(selectedSeatsCount);
+    setTotalPrice(selectedSeatsCount * (selectedMovie?.Price || 0));
+  };
 
   const handleShowForm = () => {
     if (selectedSeats.length === 0) {
