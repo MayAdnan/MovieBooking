@@ -23,6 +23,13 @@ export const Booking = () => {
         setMovies(response.data);
         setSelectedMovie(response.data[0]);
         setLoading(false);
+
+        if (response.data.length > 0) {
+          const firstMovieTitle = response.data[0].Title;
+          const bookingsResponse = await axios.get(`http://localhost:5000/bookings?movie.Title=${firstMovieTitle}`);
+          const occupied = bookingsResponse.data.flatMap((booking) => booking.seats);
+          setOccupiedSeats(occupied);
+        }
       } catch (error) {
         console.error('Error fetching movies:', error);
       }
@@ -41,7 +48,7 @@ export const Booking = () => {
     try {
       const response = await axios.get(`http://localhost:5000/bookings?movie.Title=${selectedTitle}`);
       const occupied = response.data.flatMap((booking) => booking.seats);
-      setOccupiedSeats(occupied); // Combine predefined and fetched occupied seats
+      setOccupiedSeats(occupied); 
     } catch (error) {
       console.error('Error fetching occupied seats:', error);
     }
