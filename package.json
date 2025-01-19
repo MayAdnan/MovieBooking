@@ -2,7 +2,7 @@
   "name": "moviebookigsite",
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://github.com/MayAdnan/Moviebookigsite",
+  "homepage": "https://mayadnan.github.io/Moviebookigsite/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
