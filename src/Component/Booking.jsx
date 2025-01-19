@@ -36,11 +36,12 @@ export const Booking = () => {
     const movie = movies.find((m) => m.Title === selectedTitle);
     setSelectedMovie(movie);
     setSelectedSeats([]);
+    setOccupiedSeats(['0-1', '1-1','1-0','1-4', '2-5', '3-15','3-16', '4-7', '4-3', '5-6', '5-5', '5-14']); 
 
     try {
       const response = await axios.get(`http://localhost:5000/bookings?movie.Title=${selectedTitle}`);
       const occupied = response.data.flatMap((booking) => booking.seats);
-      setOccupiedSeats([...occupiedSeats, ...occupied]); // Combine predefined and fetched occupied seats
+      setOccupiedSeats(occupied); // Combine predefined and fetched occupied seats
     } catch (error) {
       console.error('Error fetching occupied seats:', error);
     }
