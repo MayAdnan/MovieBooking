@@ -6,7 +6,7 @@ export const Booking = () => {
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [selectedSeats, setSelectedSeats] = useState([]);
-  const [occupiedSeats, setOccupiedSeats] = useState(['0-1', '1-1','1-0','1-4', '2-5', '3-15','3-16', '4-7', '4-3', '5-6', '5-5', '5-14']);
+  const [occupiedSeats, setOccupiedSeats] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({ name: '', phone: '' });
@@ -36,7 +36,7 @@ export const Booking = () => {
     const movie = movies.find((m) => m.Title === selectedTitle);
     setSelectedMovie(movie);
     setSelectedSeats([]);
-    setOccupiedSeats(['0-1', '1-1','1-0','1-4', '2-5', '3-15','3-16', '4-7', '4-3', '5-6', '5-5', '5-14']); 
+    setOccupiedSeats([]); 
 
     try {
       const response = await axios.get(`http://localhost:5000/bookings?movie.Title=${selectedTitle}`);
