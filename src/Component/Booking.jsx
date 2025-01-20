@@ -11,7 +11,7 @@ export const Booking = () => {
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [occupiedSeats, setOccupiedSeats] = useState([]);
-  const [loading, setLoading] = useState(true);
+  //const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({ name: '', phone: '' });
   const [formError, setFormError] = useState('');
@@ -26,7 +26,7 @@ export const Booking = () => {
         const response = await axios.get('http://localhost:5000/movies');
         setMovies(response.data);
         setSelectedMovie(response.data[0]);
-        setLoading(false);
+       // setLoading(false);
       } catch (error) {
         console.error('Error fetching movies:', error);
       }
