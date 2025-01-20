@@ -3,6 +3,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 
+// fixa så att sidan laddar med sätten direkt när man kör 
+// dela upp koden 
+
 export const Booking = () => {
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
@@ -24,6 +27,13 @@ export const Booking = () => {
         setMovies(response.data);
         setSelectedMovie(response.data[0]);
         setLoading(false);
+
+        if (response.data.length > 0) {
+          const firstMovieTitle = response.data[0].Title;
+          const bookingsResponse = await axios.get(`http://localhost:5000/bookings?movie.Title=${firstMovieTitle}`);
+          const occupied = bookingsResponse.data.flatMap((booking) => booking.seats);
+          setOccupiedSeats(occupied);
+        }
         
       } catch (error) {
         console.error('Error fetching movies:', error);
