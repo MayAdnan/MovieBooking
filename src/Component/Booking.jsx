@@ -2,6 +2,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+
+// fråga stefan om följande: Hemsidan funkar ej fr mobilen. När jag väljer sittplatser och bokar,
+// så visas platserna även om jag ändrar film. Det borde försvinna när jag byter film.
+
 export const Booking = () => {
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
@@ -11,8 +15,6 @@ export const Booking = () => {
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({ name: '', phone: '' });
   const [formError, setFormError] = useState('');
-  const [selectedSeatsCount, setSelectedSeatsCount] = useState(0);
-  const [totalPrice, setTotalPrice] = useState(0);
 
   const rows = Array(6)
     .fill()
@@ -25,14 +27,6 @@ export const Booking = () => {
         setMovies(response.data);
         setSelectedMovie(response.data[0]);
         setLoading(false);
-
-        if (response.data.length > 0) {
-          const firstMovieTitle = response.data[0].Title;
-          const bookingsResponse = await axios.get(`http://localhost:5000/bookings?movie.Title=${firstMovieTitle}`);
-          const occupied = bookingsResponse.data.flatMap((booking) => booking.seats);
-          setOccupiedSeats(occupied);
-        }
-
       } catch (error) {
         console.error('Error fetching movies:', error);
       }
@@ -63,11 +57,7 @@ export const Booking = () => {
       prev.includes(seatId) ? prev.filter((id) => id !== seatId) : [...prev, seatId]
     );
   };
-  const updateSelectedCount = (newSelectedSeats) => {
-    const selectedSeatsCount = newSelectedSeats.length;
-    setSelectedSeatsCount(selectedSeatsCount);
-    setTotalPrice(selectedSeatsCount * (selectedMovie?.Price || 0));
-  };
+
 
   const handleShowForm = () => {
     if (selectedSeats.length === 0) {
@@ -120,7 +110,7 @@ export const Booking = () => {
     }
   };
 
-  if (loading) return <p>Loading movies...</p>;
+  //if (loading) return <p>Loading movies...</p>;
     
 
 
