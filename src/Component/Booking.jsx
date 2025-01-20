@@ -127,6 +127,10 @@ export const Booking = () => {
       console.error('Error booking seats:', error);
     }
   };
+  
+  
+  // eslint-disable-next-line no-undef
+  setOccupiedSeats(occupied);
 
   if (loading) return <p>Loading movies...</p>;
     
