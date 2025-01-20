@@ -107,8 +107,6 @@ export const Booking = () => {
     }
   };
 
-  handleMovieChange({ target: { value: selectedMovie.Title } });
-
   if (loading) return <p>Loading movies...</p>;
     
 
