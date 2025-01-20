@@ -43,20 +43,28 @@ export const Booking = () => {
     fetchMovies();
   }, []);
 
+  useEffect(() => {
+    if (selectedMovie) {
+      const fetchOccupiedSeats = async () => {
+        try {
+          const response = await axios.get(`http://localhost:5000/bookings?movie.Title=${selectedMovie.Title}`);
+          const occupied = response.data.flatMap((booking) => booking.seats);
+          setOccupiedSeats(occupied);
+        } catch (error) {
+          console.error('Error fetching occupied seats:', error);
+        }
+      };
+
+      fetchOccupiedSeats();
+    }
+  }, [selectedMovie]);
+
   const handleMovieChange = async (e) => {
     const selectedTitle = e.target.value;
     const movie = movies.find((m) => m.Title === selectedTitle);
     setSelectedMovie(movie);
     setSelectedSeats([]);
     setOccupiedSeats([]); 
-
-    try {
-      const response = await axios.get(`http://localhost:5000/bookings?movie.Title=${selectedTitle}`);
-      const occupied = response.data.flatMap((booking) => booking.seats);
-      setOccupiedSeats(occupied); 
-    } catch (error) {
-      console.error('Error fetching occupied seats:', error);
-    }
   };
 
   const handleSeatClick = (rowIndex, seatIndex) => {
