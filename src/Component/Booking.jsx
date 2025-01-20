@@ -119,6 +119,9 @@ export const Booking = () => {
       setSelectedSeats([]);
       setShowForm(false);
       setFormData({ name: '', phone: '' });
+      
+
+  handleMovieChange({ target: { value: selectedMovie.Title } });
     } catch (error) {
       alert('Failed to book seats. Please try again.');
       console.error('Error booking seats:', error);
