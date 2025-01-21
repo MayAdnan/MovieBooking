@@ -2,14 +2,11 @@
   "name": "moviebookigsite",
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://github.com/MayAdnan/Moviebookigsite",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "preview": "vite preview"
   },
   "dependencies": {
     "axios": "^1.7.9",
