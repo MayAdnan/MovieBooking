@@ -1,12 +1,16 @@
 import React, {useState} from "react";
 
-export const BookingForm = ({onSubmit, selectedSeats, SelectedMovie}) => {
+export const BookingForm = ({onSubmit, selectedSeats, selectedMovie }) => {
     const [formData, setFormData] = useState({name: "", phone: ""});
     const [formError, setFormError] = useState("");
 
     const validateForm = () => {
-        if (!formData.name.trim || !/^\d{5}$/.test(formData.phone)){
-            setFormError("Please fill out all fields");
+        if (!formData.name.trim()){
+            setFormError("Name is required.");
+            return false;
+        } 
+        if (!/^\d{5}$/.test(formData.phone)) {
+            setFormError("Phone number must be exactly 5 digits.");
             return false;
         }
 
@@ -49,7 +53,9 @@ export const BookingForm = ({onSubmit, selectedSeats, SelectedMovie}) => {
           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
         />
       </div>
-      <button type="submit">Submit</button>
+      <button type="submit"disabled={selectedSeats.length === 0}>
+        Submit
+        </button>
     </form>
   );
 };

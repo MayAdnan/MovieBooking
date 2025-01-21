@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { fetchMovies, fetchBookings, createBooking } from './api';
-import { SeatGrid } from './SeatGrid';
+import { fetchMovies, fetchBookings, createBooking } from './Api';
+import { SeatGrid} from './Seats';
 import { BookingForm } from './BookingForm';
+import { MovieSelector } from './MovieSelector';
 
-export const Booking = () => {
+export const App = () => {
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [selectedSeats, setSelectedSeats] = useState([]);
@@ -13,10 +14,12 @@ export const Booking = () => {
   useEffect(() => {
     const loadMovies = async () => {
       const movies = await fetchMovies();
+      if (movies.length > 0) {
       setMovies(movies);
       setSelectedMovie(movies[0]);
       const occupied = await fetchBookings(movies[0].Title);
       setOccupiedSeats(occupied);
+      }
       setLoading(false);
     };
     loadMovies();
@@ -57,23 +60,36 @@ export const Booking = () => {
 
   return (
     <div>
-      <div className="movie-container">
-        <label htmlFor="movie">Pick a movie:</label>
-        <select id="movie" onChange={handleMovieChange} value={selectedMovie?.Title || ''}>
-          {movies.map((movie) => (
-            <option key={movie.Title} value={movie.Title}>
-              {movie.Title} ({movie.Price} kr)
-            </option>
-          ))}
-        </select>
+      <MovieSelector
+        movies={movies}
+        selectedMovie={selectedMovie}
+        onChange={handleMovieChange}
+      />
+      
+      <div className="showcase">
+          <li>
+            <div className="seat"></div>
+            <small>N/A</small>
+          </li>
+          <li>
+            <div className="seat selected"></div>
+            <small>Selected</small>
+          </li>
+          <li>
+            <div className="seat occupied"></div>
+            <small>Occupied</small>
+          </li>
       </div>
+
+      <div className="screen"></div>
+
       <SeatGrid
-        rows={Array(6).fill(Array(17).fill('seat'))}
+        rows={Array.from({length: 6}, () => Array(17).fill('seat'))}
         selectedSeats={selectedSeats}
         occupiedSeats={occupiedSeats}
         onSeatClick={handleSeatClick}
       />
-      <p>
+      <p className="text">
         You have selected <span>{selectedSeats.length}</span> seats for a total of{' '}
         <span>{selectedSeats.length * (selectedMovie?.Price || 0)}</span> kr.
       </p>

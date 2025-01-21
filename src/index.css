@@ -114,3 +114,19 @@ p.text {
 p.text span {
   color: #6feaf6;
 }
+.booking-form {
+  border-radius: 5px;
+  padding: 20px;
+  width: 300px;
+}
+button {
+  background-color: #6feaf6;
+  border: 0;
+  border-radius: 5px;
+  color: #242333;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: inherit;
+  margin-top: 20px;
+  padding: 10px 20px;
+}
