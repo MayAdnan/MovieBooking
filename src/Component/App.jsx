@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { fetchMovies, fetchBookings, createBooking } from './Api';
+import { useState, useEffect } from 'react';
+import { fetchMovies, fetchBookings, createBooking } from '../data/Api';
 import { SeatGrid} from './Seats';
 import { BookingForm } from './BookingForm';
 import { MovieSelector } from './MovieSelector';
+import { AdminMovies } from './Crud';
 
 export const App = () => {
   const [movies, setMovies] = useState([]);
@@ -10,18 +11,28 @@ export const App = () => {
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [occupiedSeats, setOccupiedSeats] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [admin, setAdmin] = useState(false);
 
   useEffect(() => {
     const loadMovies = async () => {
-      const movies = await fetchMovies();
-      if (movies.length > 0) {
-      setMovies(movies);
-      setSelectedMovie(movies[0]);
-      const occupied = await fetchBookings(movies[0].Title);
-      setOccupiedSeats(occupied);
+      try {
+        const movies = await fetchMovies();
+        if (!movies || movies.length === 0) {
+          setMovies([]);
+          setLoading(false);
+          return;
+        }
+        setMovies(movies);
+        setSelectedMovie(movies[0]);
+        const occupied = await fetchBookings(movies[0].Title);
+        setOccupiedSeats(occupied);
+      } catch (error) {
+        console.error('Error fetching movies:', error);
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
     };
+
     loadMovies();
   }, []);
 
@@ -29,9 +40,14 @@ export const App = () => {
     const selectedTitle = e.target.value;
     const movie = movies.find((m) => m.Title === selectedTitle);
     setSelectedMovie(movie);
-    const occupied = await fetchBookings(movie.Title);
-    setOccupiedSeats(occupied);
     setSelectedSeats([]);
+      try {
+        const occupied = await fetchBookings(movie.Title);
+        setOccupiedSeats(occupied);
+    } catch (error) {
+        console.error('Error fetching bookings:', error);
+        setOccupiedSeats([]);
+    }
   };
 
   const handleSeatClick = (rowIndex, seatIndex) => {
@@ -42,6 +58,10 @@ export const App = () => {
   };
 
   const handleBookingSubmit = async (formData) => {
+    if (selectedSeats.length === 0) {
+      alert('Please select at least one seat.');
+      return;
+    }
     const bookingDetails = {
       movie: selectedMovie,
       seats: selectedSeats,
@@ -49,23 +69,44 @@ export const App = () => {
       phone: formData.phone,
       totalPrice: selectedSeats.length * (selectedMovie?.Price || 0),
     };
+
+    try {
     await createBooking(bookingDetails);
     alert('Booking successful!');
     const occupied = await fetchBookings(selectedMovie.Title);
     setOccupiedSeats(occupied);
     setSelectedSeats([]);
+    } catch (error) {
+      alert('Booking failed. Please try again.');
+    }
   };
 
-  if (loading) return <p>Loading movies...</p>;
+  const deleteMovie = async (id) => {
+    try {
+      await axios.delete(`${baseUrl}/movies/${id}`);
+      setMovies(movies.filter((movie) => movie.id !== id));
+
+      if (selectedMovie && selectedMovie.id === id) {
+        setSelectedMovie(null);
+        setSelectedSeats([]);
+      }
+    } catch (error) {
+      console.error('Error deleting movie:', error);
+    }
+  }
+
+  if (loading) {
+    return <p>Loading movies...</p>;
+  }
 
   return (
+    <>
     <div>
       <MovieSelector
         movies={movies}
         selectedMovie={selectedMovie}
         onChange={handleMovieChange}
       />
-      
       <div className="showcase">
           <li>
             <div className="seat"></div>
@@ -80,9 +121,7 @@ export const App = () => {
             <small>Occupied</small>
           </li>
       </div>
-
       <div className="screen"></div>
-
       <SeatGrid
         rows={Array.from({length: 6}, () => Array(17).fill('seat'))}
         selectedSeats={selectedSeats}
@@ -98,6 +137,13 @@ export const App = () => {
         selectedMovie={selectedMovie}
         onSubmit={handleBookingSubmit}
       />
+      <div>
+        <button onClick={() => setAdmin(!admin)}>
+          {admin ? 'Back to booking' : 'Admin'}
+        </button>
+      </div>
+      {admin && <AdminMovies />}
     </div>
+    </>
   );
 };

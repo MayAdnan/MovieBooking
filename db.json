@@ -1,11 +1,10 @@
 {
   "movies": [
     {
+      "id": "e261",
       "Title": "The Lion King",
-      "Year": "2019",
-      "Price": 100,
-      "Poster": "https://m.media-amazon.com/images/M/MV5BMjIwMjE1Nzc4NV5BMl5BanBnXkFtZTgwNDg4OTA1NzM@._V1_SX300.jpg",
-      "id": "e261"
+      "Year": "2014",
+      "Price": "100"
     },
     {
       "Title": "Mowgli: Legend of the Jungle",
@@ -36,13 +35,6 @@
       "id": "7c4b"
     },
     {
-      "Title": "Spider-Man: No Way Home",
-      "Year": "2021",
-      "Price": 140,
-      "Poster": "https://m.media-amazon.com/images/M/MV5BMjQ1NzQ2MTE1M15BMl5BanBnXkFtZTgwNzgxNjUxMzE@._V1_SX300.jpg",
-      "id": "df13"
-    },
-    {
       "Title": "Frozen II",
       "Year": "2019",
       "Price": 80,
@@ -71,11 +63,10 @@
       "id": "1c3e"
     },
     {
+      "id": "7b3a",
       "Title": "Interstellar",
       "Year": "2014",
-      "Price": 100,
-      "Poster": "https://m.media-amazon.com/images/M/MV5BMjIxNTU4MzY4MF5BMl5BanBnXkFtZTgwNTczMTkzMjE@._V1_SX300.jpg",
-      "id": "7b3a"
+      "Price": "90"
     },
     {
       "Title": "The Dark Knight",
@@ -492,23 +483,6 @@
       "totalPrice": 120
     },
     {
-      "id": "62f9",
-      "movie": {
-        "Title": "Spider-Man: No Way Home",
-        "Year": "2021",
-        "Price": 140,
-        "Poster": "https://m.media-amazon.com/images/M/MV5BMjQ1NzQ2MTE1M15BMl5BanBnXkFtZTgwNzgxNjUxMzE@._V1_SX300.jpg",
-        "id": "df13"
-      },
-      "seats": [
-        "4-2",
-        "4-3"
-      ],
-      "name": "Daniel",
-      "phone": "55555",
-      "totalPrice": 280
-    },
-    {
       "id": "e787",
       "movie": {
         "Title": "Doctor Strange",
@@ -541,6 +515,122 @@
       "name": "Magnus",
       "phone": "32147",
       "totalPrice": 220
+    },
+    {
+      "id": "5253",
+      "movie": {
+        "Title": "Interstellar",
+        "Year": "2014",
+        "Price": 100,
+        "Poster": "https://m.media-amazon.com/images/M/MV5BMjIxNTU4MzY4MF5BMl5BanBnXkFtZTgwNTczMTkzMjE@._V1_SX300.jpg",
+        "id": "7b3a"
+      },
+      "seats": [
+        "0-14",
+        "0-13"
+      ],
+      "name": "David",
+      "phone": "11223",
+      "totalPrice": 200
+    },
+    {
+      "id": "fdc7",
+      "movie": {
+        "Title": "Interstellar",
+        "Year": "2014",
+        "Price": 100,
+        "Poster": "https://m.media-amazon.com/images/M/MV5BMjIxNTU4MzY4MF5BMl5BanBnXkFtZTgwNTczMTkzMjE@._V1_SX300.jpg",
+        "id": "7b3a"
+      },
+      "seats": [
+        "5-15",
+        "5-16"
+      ],
+      "name": "Daniel",
+      "phone": "12345",
+      "totalPrice": 200
+    },
+    {
+      "id": "317f",
+      "movie": {
+        "Title": "Frozen II",
+        "Year": "2019",
+        "Price": 80,
+        "Poster": "https://m.media-amazon.com/images/M/MV5BMzllZjNjZGUtNzgyMy00NzBmLTgyOGEtN2Q4Y2U0ZTUzYmEwXkE@._V1_SX300.jpg",
+        "id": "3be3"
+      },
+      "seats": [
+        "5-1",
+        "5-0"
+      ],
+      "name": "David",
+      "phone": "12355",
+      "totalPrice": 160
+    },
+    {
+      "id": "c465",
+      "movie": {
+        "Title": "The Lion King",
+        "Year": "2019",
+        "Price": 100,
+        "Poster": "https://m.media-amazon.com/images/M/MV5BMjIwMjE1Nzc4NV5BMl5BanBnXkFtZTgwNDg4OTA1NzM@._V1_SX300.jpg",
+        "id": "e261"
+      },
+      "seats": [
+        "5-12",
+        "5-13"
+      ],
+      "name": "Magnus",
+      "phone": "55555",
+      "totalPrice": 200
+    },
+    {
+      "id": "310a",
+      "movie": {
+        "Title": "The Lion King",
+        "Year": "2019",
+        "Price": 100,
+        "Poster": "https://m.media-amazon.com/images/M/MV5BMjIwMjE1Nzc4NV5BMl5BanBnXkFtZTgwNDg4OTA1NzM@._V1_SX300.jpg",
+        "id": "e261"
+      },
+      "seats": [
+        "5-0"
+      ],
+      "name": "Magnus",
+      "phone": "78945",
+      "totalPrice": 100
+    },
+    {
+      "id": "8a59",
+      "movie": {
+        "Title": "Frozen II",
+        "Year": "2019",
+        "Price": 80,
+        "Poster": "https://m.media-amazon.com/images/M/MV5BMzllZjNjZGUtNzgyMy00NzBmLTgyOGEtN2Q4Y2U0ZTUzYmEwXkE@._V1_SX300.jpg",
+        "id": "3be3"
+      },
+      "seats": [
+        "0-0"
+      ],
+      "name": "Linus",
+      "phone": "12356",
+      "totalPrice": 80
+    },
+    {
+      "id": "ed5e",
+      "movie": {
+        "Title": "John Wick",
+        "Year": "2014",
+        "Price": 60,
+        "Poster": "https://m.media-amazon.com/images/M/MV5BMTU2NjA1ODgzMF5BMl5BanBnXkFtZTgwMTM2MTI4MjE@._V1_SX300.jpg",
+        "id": "ac27"
+      },
+      "seats": [
+        "0-16"
+      ],
+      "name": "may",
+      "phone": "12345",
+      "totalPrice": 60
     }
   ]
 }

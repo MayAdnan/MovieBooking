@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const SeatGrid = ({ rows, occupiedSeats, selectedSeats, onSeatClick }) => {
     console.log('rows:', rows);
     console.log('occupiedSeats:', occupiedSeats);
@@ -11,9 +9,10 @@ export const SeatGrid = ({ rows, occupiedSeats, selectedSeats, onSeatClick }) =>
     }
     
     return (
-    <div className="container">
+    <>
+     <div className="container">
         {rows.map((row, rowIndex) => (
-        <div className="row" key={rowIndex}>
+        <div className="row" key={rowIndex}>  
             {row.map((_, seatIndex) => {
             const seatId = `${rowIndex}-${seatIndex}`;
             const isSelected = selectedSeats.includes(seatId);
@@ -30,5 +29,6 @@ export const SeatGrid = ({ rows, occupiedSeats, selectedSeats, onSeatClick }) =>
         </div>
         ))}
     </div>
+    </>
     );
 };

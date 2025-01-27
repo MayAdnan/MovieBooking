@@ -128,5 +128,7 @@ button {
   font-size: 16px;
   font-family: inherit;
   margin-top: 20px;
+  margin: 10px 10px 10px 0;
   padding: 10px 20px;
+  
 }

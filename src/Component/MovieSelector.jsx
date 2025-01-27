@@ -1,11 +1,10 @@
-import React from 'react';
-
 export const MovieSelector = ({ movies, selectedMovie, onChange }) => {
     if (movies.length === 0) {
         return <p>Loading movies...</p>;
     }
 
     return (
+        <> 
         <div className="movie-container">
             <label htmlFor="movie">Pick a movie:</label>
             <select id="movie" onChange={onChange} value={selectedMovie?.Title || ''}>
@@ -16,5 +15,6 @@ export const MovieSelector = ({ movies, selectedMovie, onChange }) => {
                 ))}
             </select>
         </div>
+        </>
     );
 };
