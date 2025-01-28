@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { fetchMovies } from "../data/Api";
+import { fetchMovies } from "./data/Api";
 
 const baseUrl = "http://localhost:3000";
 
 export const AdminMovies = () => {
   const [movies, setMovies] = useState([]);
-  const [form, setForm] = useState({ id: "", Title: "", Year: "", Price: "" });
+  const [form, setForm] = useState({ Title: "", Year: "", Price: "" , id: "" });
 
   useEffect(() => {
     const loadMovies = async () => {
@@ -21,10 +21,17 @@ export const AdminMovies = () => {
       alert("Please fill out all fields.");
       return;
     }
+    
+    const newMovie = {
+      Title: form.Title,
+      Year: form.Year,
+      Price: form.Price,
+    };
+
     try {
-      const response = await axios.post(`${baseUrl}/movies`, form);
+      const response = await axios.post(`${baseUrl}/movies`, newMovie);
       setMovies([...movies, response.data]);
-      setForm({ id: null, Title: "", Year: "", Price: "" });
+      setForm({ Title: "", Year: "", Price: "", id: "" });
     } catch (error) {
       console.error("Error adding movie:", error);
     }
@@ -34,20 +41,12 @@ export const AdminMovies = () => {
     try {
       await axios.put(`${baseUrl}/movies/${form.id}`, form);
       setMovies(movies.map((movie) => (movie.id === form.id ? form : movie)));
-      setForm({ id: null, Title: "", Year: "", Price: "" });
+      setForm({ Title: "", Year: "", Price: "", id: "" });
     } catch (error) {
       console.error("Error updating movie:", error);
     }
   };
 
-  const deleteMovie = async(id) => {
-    try {
-      await axios.delete(`${baseUrl}/movies/${id}`);
-      setMovies(movies.filter((movie) => movie.id !== id));
-    } catch (error) {
-        console.error("Error deleting movie:", error);
-        }
-  };
   const editMovie = (movie) => {
     setForm({
       id: movie.id,
@@ -55,6 +54,16 @@ export const AdminMovies = () => {
       Year: movie.Year,
       Price: movie.Price,
     });
+  };
+
+  const deleteMovie = async(id) => {
+    console.log("Deleting movie with id:", id);
+    try {
+      await axios.delete(`${baseUrl}/movies/${id}`);
+      setMovies((prevMovies) => prevMovies.filter((movie) => movie.id !== id));
+    } catch (error) {
+        console.error("Error deleting movie:", error);
+        }
   };
 
   return (
@@ -105,7 +114,7 @@ export const AdminMovies = () => {
             <li key={movie.id}>
               {movie.Title} ({movie.Year}) - {movie.Price} kr
               <button onClick={() => editMovie(movie)}>Edit</button>
-              <button onClick={() => deleteMovie(movie.id)}>Delete</button>
+              <button onClick={() => deleteMovie (movie.id)}>Delete</button>
             </li>
           ))}
         </ul>

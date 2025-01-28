@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
-import { fetchMovies, fetchBookings, createBooking } from '../data/Api';
+import { fetchMovies, fetchBookings, createBooking } from './data/Api';
 import { SeatGrid} from './Seats';
 import { BookingForm } from './BookingForm';
 import { MovieSelector } from './MovieSelector';
 import { AdminMovies } from './Crud';
+import axios from 'axios';
+
+const baseUrl = "http://localhost:3000"; 
 
 export const App = () => {
   const [movies, setMovies] = useState([]);
@@ -22,10 +25,12 @@ export const App = () => {
           setLoading(false);
           return;
         }
+
         setMovies(movies);
         setSelectedMovie(movies[0]);
         const occupied = await fetchBookings(movies[0].Title);
         setOccupiedSeats(occupied);
+
       } catch (error) {
         console.error('Error fetching movies:', error);
       } finally {
@@ -84,7 +89,8 @@ export const App = () => {
   const deleteMovie = async (id) => {
     try {
       await axios.delete(`${baseUrl}/movies/${id}`);
-      setMovies(movies.filter((movie) => movie.id !== id));
+      const updatedMovies = await fetchMovies();
+      setMovies(updatedMovies);
 
       if (selectedMovie && selectedMovie.id === id) {
         setSelectedMovie(null);
@@ -142,7 +148,7 @@ export const App = () => {
           {admin ? 'Back to booking' : 'Admin'}
         </button>
       </div>
-      {admin && <AdminMovies />}
+      {admin && <AdminMovies onClick={deleteMovie}/>}
     </div>
     </>
   );
