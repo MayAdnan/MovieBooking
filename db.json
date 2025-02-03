@@ -1,12 +1,6 @@
 {
   "movies": [
     {
-      "id": "6992",
-      "Title": "Mowgli: Legend of the Jungle",
-      "Year": "2018",
-      "Price": "70"
-    },
-    {
       "Title": "Doctor Strange",
       "Year": "2016",
       "Price": 120,
@@ -66,12 +60,6 @@
       "Title": "The Lion King",
       "Year": "2019",
       "Price": "105"
-    },
-    {
-      "id": "481f",
-      "Title": "Joker ",
-      "Year": "2019",
-      "Price": "90"
     }
   ],
   "bookings": [
@@ -266,6 +254,21 @@
       "name": "may",
       "phone": "78945",
       "totalPrice": 80
+    },
+    {
+      "id": "28ea",
+      "movie": {
+        "id": "6992",
+        "Title": "Mowgli: Legend of the Jungle",
+        "Year": "2018",
+        "Price": "70"
+      },
+      "seats": [
+        "5-5"
+      ],
+      "name": "ggg",
+      "phone": "12345",
+      "totalPrice": 70
     }
   ]
 }

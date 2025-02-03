@@ -113,8 +113,8 @@ export const AdminMovies = () => {
           {movies.map((movie) => (
             <li key={movie.id}>
               {movie.Title} ({movie.Year}) - {movie.Price} kr
-              <button onClick={() => editMovie(movie)}>Edit</button>
-              <button onClick={() => deleteMovie (movie.id)}>Delete</button>
+              <button className = "button2" onClick={() => editMovie(movie)}>Edit</button>
+              <button className = "button2" onClick={() => deleteMovie (movie.id)}>Delete</button>
             </li>
           ))}
         </ul>

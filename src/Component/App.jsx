@@ -15,6 +15,7 @@ export const App = () => {
   const [occupiedSeats, setOccupiedSeats] = useState([]);
   const [loading, setLoading] = useState(true);
   const [admin, setAdmin] = useState(false);
+  const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
     const loadMovies = async () => {
@@ -39,7 +40,7 @@ export const App = () => {
     };
 
     loadMovies();
-  }, []);
+  }, [refresh]);
 
   const handleMovieChange = async (e) => {
     const selectedTitle = e.target.value;
@@ -67,6 +68,7 @@ export const App = () => {
       alert('Please select at least one seat.');
       return;
     }
+
     const bookingDetails = {
       movie: selectedMovie,
       seats: selectedSeats,
@@ -126,7 +128,7 @@ export const App = () => {
             <div className="seat occupied"></div>
             <small>Occupied</small>
           </li>
-      </div>
+    </div>
       <div className="screen"></div>
       <SeatGrid
         rows={Array.from({length: 6}, () => Array(17).fill('seat'))}
@@ -144,7 +146,7 @@ export const App = () => {
         onSubmit={handleBookingSubmit}
       />
       <div>
-        <button onClick={() => setAdmin(!admin)}>
+        <button onClick={() =>  {setRefresh(!refresh); setAdmin(!admin); }}>
           {admin ? 'Back to booking' : 'Admin'}
         </button>
       </div>
