@@ -64,36 +64,6 @@
   ],
   "bookings": [
     {
-      "id": "56af",
-      "movie": {
-        "Title": "The Lion King",
-        "Year": "2019",
-        "Price": 100,
-        "Poster": "https://m.media-amazon.com/images/M/MV5BMjIwMjE1Nzc4NV5BMl5BanBnXkFtZTgwNDg4OTA1NzM@._V1_SX300.jpg"
-      },
-      "seats": [
-        "0-1",
-        "0-0"
-      ],
-      "totalPrice": 200
-    },
-    {
-      "id": "6591",
-      "movie": {
-        "Title": "The Lion King",
-        "Year": "2019",
-        "Price": 100,
-        "Poster": "https://m.media-amazon.com/images/M/MV5BMjIwMjE1Nzc4NV5BMl5BanBnXkFtZTgwNDg4OTA1NzM@._V1_SX300.jpg"
-      },
-      "seats": [
-        "1-14",
-        "1-13"
-      ],
-      "name": "Lina",
-      "phone": "11111",
-      "totalPrice": 200
-    },
-    {
       "id": "30d1",
       "movie": {
         "Title": "The Dark Knight",
@@ -101,10 +71,7 @@
         "Price": 120,
         "Poster": "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg"
       },
-      "seats": [
-        "2-7",
-        "2-8"
-      ],
+      "seats": ["2-7", "2-8"],
       "name": "David",
       "phone": "78945",
       "totalPrice": 240
@@ -117,29 +84,10 @@
         "Price": 90,
         "Poster": "https://m.media-amazon.com/images/M/MV5BM2MxNjYxNzAtNWVmMi00ZjU3LTg2ZjUtZmY2NjQ3ZDJkZmE3XkE@._V1_SX300.jpg"
       },
-      "seats": [
-        "0-9",
-        "0-8"
-      ],
+      "seats": ["0-9", "0-8"],
       "name": "Linus",
       "phone": "45612",
       "totalPrice": 180
-    },
-    {
-      "id": "b431",
-      "movie": {
-        "Title": "The Lion King",
-        "Year": "2019",
-        "Price": 100,
-        "Poster": "https://m.media-amazon.com/images/M/MV5BMjIwMjE1Nzc4NV5BMl5BanBnXkFtZTgwNDg4OTA1NzM@._V1_SX300.jpg"
-      },
-      "seats": [
-        "2-9",
-        "2-8"
-      ],
-      "name": "Daniel",
-      "phone": "32147",
-      "totalPrice": 200
     },
     {
       "id": "9fc8",
@@ -149,10 +97,7 @@
         "Price": 110,
         "Poster": "https://m.media-amazon.com/images/M/MV5BM2I0MDlmODQtNTM1NC00ZmM2LWE4ZGUtMDYxNjMxZTAzMzkwXkE@._V1_SX300.jpg"
       },
-      "seats": [
-        "2-8",
-        "2-9"
-      ],
+      "seats": ["2-8", "2-9"],
       "name": "Daniel",
       "phone": "32147",
       "totalPrice": 220
@@ -165,10 +110,7 @@
         "Price": 110,
         "Poster": "https://m.media-amazon.com/images/M/MV5BM2I0MDlmODQtNTM1NC00ZmM2LWE4ZGUtMDYxNjMxZTAzMzkwXkE@._V1_SX300.jpg"
       },
-      "seats": [
-        "5-1",
-        "5-0"
-      ],
+      "seats": ["5-1", "5-0"],
       "name": "David",
       "phone": "32147",
       "totalPrice": 220
@@ -181,11 +123,7 @@
         "Price": 140,
         "Poster": "https://m.media-amazon.com/images/M/MV5BMjQ1NzQ2MTE1M15BMl5BanBnXkFtZTgwNzgxNjUxMzE@._V1_SX300.jpg"
       },
-      "seats": [
-        "0-14",
-        "0-13",
-        "0-12"
-      ],
+      "seats": ["0-14", "0-13", "0-12"],
       "name": "may",
       "phone": "45612",
       "totalPrice": 420
@@ -198,30 +136,10 @@
         "Price": 60,
         "Poster": "https://m.media-amazon.com/images/M/MV5BMTU2NjA1ODgzMF5BMl5BanBnXkFtZTgwMTM2MTI4MjE@._V1_SX300.jpg"
       },
-      "seats": [
-        "1-9",
-        "1-10",
-        "1-11"
-      ],
+      "seats": ["1-9", "1-10", "1-11"],
       "name": "Daniel",
       "phone": "12356",
       "totalPrice": 180
-    },
-    {
-      "id": "672e",
-      "movie": {
-        "Title": "The Lion King",
-        "Year": "2019",
-        "Price": 100,
-        "Poster": "https://m.media-amazon.com/images/M/MV5BMjIwMjE1Nzc4NV5BMl5BanBnXkFtZTgwNDg4OTA1NzM@._V1_SX300.jpg"
-      },
-      "seats": [
-        "0-10",
-        "0-9"
-      ],
-      "name": "may",
-      "phone": "45612",
-      "totalPrice": 200
     },
     {
       "id": "7f8a",
@@ -231,10 +149,7 @@
         "Price": 110,
         "Poster": "https://m.media-amazon.com/images/M/MV5BM2I0MDlmODQtNTM1NC00ZmM2LWE4ZGUtMDYxNjMxZTAzMzkwXkE@._V1_SX300.jpg"
       },
-      "seats": [
-        "0-15",
-        "0-16"
-      ],
+      "seats": ["0-15", "0-16"],
       "name": "may",
       "phone": "12345",
       "totalPrice": 220
@@ -247,10 +162,7 @@
         "Price": 40,
         "Poster": "https://m.media-amazon.com/images/M/MV5BMjMzODc2NzU5MV5BMl5BanBnXkFtZTgwNTMwMTE3NjM@._V1_SX300.jpg"
       },
-      "seats": [
-        "0-0",
-        "0-1"
-      ],
+      "seats": ["0-0", "0-1"],
       "name": "may",
       "phone": "78945",
       "totalPrice": 80
@@ -263,9 +175,7 @@
         "Year": "2018",
         "Price": "70"
       },
-      "seats": [
-        "5-5"
-      ],
+      "seats": ["5-5"],
       "name": "ggg",
       "phone": "12345",
       "totalPrice": 70
