@@ -36,6 +36,7 @@ ESLint hittar och återgärdar fel i koden.
 CSS används för design och layout.
 
 Bilder från projektet:
+
 ![Image](https://github.com/user-attachments/assets/9a9a21a3-5f1f-4c7c-9c04-9dd188d854d1)
 
 ![Image](https://github.com/user-attachments/assets/162d3b86-8bc0-40ac-9159-1b7e7944b9de)
